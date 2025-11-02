@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="total">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <title>BayView</title>
+</head>
+<body class="page">
+    <header class="header">
+        <img src="images/logo.png" class="head__logo_img">
+        <button class="head__lang">
+            <h1 class="lang_txt">eng</h1>
+            <img class="lang_line" src="images/line.png">
+        </button>
+        <button class="head__login">
+            <h1 class="login_txt">Log in</h1>
+            <img src="images/login.png" class="login_img">
+        </button>
+    </header>
+
+    <main class="main__block">
+        <div class="main">
+            <img src="images/main.png" class="main__img">    
+            <h1 class="main__txt">Rental Housing at SomaBay.</h1>
+            <h2 class="main__un_txt">Housing rental platform</h2>
+            <button class="main__see">
+                <h1 class="see_txt">    
+                    See more
+                </h1>
+            </button>
+            <img class="img_1" src="images/house1.png">
+            <img class="img_2" src="images/house2.png">
+            <img class="img_3" src="images/house3.png">
+            <div class="log_block">
+                <div class="main_login">
+                    <button class="close-btn">×</button>
+                    <h1 class="log_block_txt">Log in</h1>
+                    <h2 class="auth1">E-mail / login</h2>
+                    <input class="inp1" type="text" name="login">
+                    <h2 class="auth2">Password</h2>
+                    <div class="password-container">
+                        <input class="inp2" type="password" name="password">
+                        <button type="button" class="toggle-password">
+                            <img class="eye" src="images/eye.png">
+                        </button>
+                    </div>
+                    <button class="end_login">
+                        <h1 class="end_txt">Log in</h1>
+                    </button>
+                    <p class="create-account-link">Don't have an account? <a href="#" class="show-register">Create account</a></p>
+                </div>            
+                <div class="back_login"></div>
+            </div>
+        </div>
+
+        <!-- Блок с фильтрами и карточками -->
+        <div class="housing-section" id="housingSection">
+            <!-- Левая часть - фильтры -->
+            <div class="filters-sidebar">
+                <h2 class="filters-title">Filters</h2>
+                
+                <!-- Поиск по названию -->
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search by name...">
+                </div>
+                
+                <!-- Фильтры-чекбоксы -->
+                <div class="filters-container">
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input" value="dishwasher">
+                        <span class="checkmark"></span>
+                        Dishwasher
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input" value="Washing machine">
+                        <span class="checkmark"></span>
+                        Washing machine
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input" value="wifi">
+                        <span class="checkmark"></span>
+                        WiFi
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input" value="parking">
+                        <span class="checkmark"></span>
+                        Parking
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input" value="pool">
+                        <span class="checkmark"></span>
+                        Pool
+                    </label>
+                </div>
+                
+                <!-- Кнопка создания жилья -->
+                <button class="create-housing-btn">
+                    Create Housing
+                </button>
+            </div>
+            
+            <!-- Правая часть - карточки жилья -->
+            <div class="housing-cards" id="housingCards">
+                <!-- Карточки будут добавляться здесь -->
+            </div>
+        </div>
+
+        <!-- Модальное окно создания жилья -->
+        <div class="create-modal">
+            <div class="create-content">
+                <button class="close-create-btn">×</button>
+                <h2 class="create-title">Create New Housing</h2>
+                
+                <div class="create-form">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="create-name" placeholder="Enter housing name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea class="create-description" placeholder="Enter housing description"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Image:</label>
+                        <input type="file" class="create-image" accept="image/*">
+                        <small class="small" style="color: #666; font-size: 12px;">Supported formats: JPG, PNG, GIF</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="filters-label">Features:</label>
+                        <div class="create-filters">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" class="create-filter" value="dishwasher">
+                                <span class="checkmark"></span>
+                                Dishwasher
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" class="create-filter" value="Washing machine">
+                                <span class="checkmark"></span>
+                                Washing machine
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" class="create-filter" value="wifi">
+                                <span class="checkmark"></span>
+                                WiFi
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" class="create-filter" value="parking">
+                                <span class="checkmark"></span>
+                                Parking
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" class="create-filter" value="pool">
+                                <span class="checkmark"></span>
+                                Pool
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="submit-create-btn">Create Housing</button>
+                </div>
+            </div>
+            <div class="create-backdrop"></div>
+        </div>
+
+        <!-- Модальное окно просмотра жилья -->
+        <div class="view-modal">
+            <div class="view-content">
+                <button class="close-view-btn">×</button>
+                <h2 class="view-title" id="viewHouseTitle"></h2>
+                <p class="view-description" id="viewHouseDescription"></p>
+                <div class="view-features" id="viewHouseFeatures"></div>
+            </div>
+            <div class="view-backdrop"></div>
+        </div>
+
+        <!-- Модальное окно регистрации -->
+        <div class="register-modal">
+            <div class="register-content">
+                <button class="close-register-btn">×</button>
+                <h2 class="register-title">Create Account</h2>
+                
+                <div class="register-form">
+                    <div class="register-group">
+                        <label>Full Name:</label>
+                        <input type="text" class="register-input register-name" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="register-group">
+                        <label>Email:</label>
+                        <input type="email" class="register-input register-email" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="register-group">
+                        <label>Phone:</label>
+                        <input type="tel" class="register-input register-phone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="register-group">
+                        <label>Password:</label>
+                        <div class="password-container">
+                            <input type="password" class="register-input register-password" placeholder="Create password">
+                            <button type="button" class="toggle-password">
+                                <img class="eye" src="images/eye.png">
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="register-group">
+                        <label>Confirm Password:</label>
+                        <div class="password-container">
+                            <input type="password" class="register-input register-confirm" placeholder="Confirm password">
+                            <button type="button" class="toggle-password">
+                                <img class="eye" src="images/eye.png">
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="submit-register-btn">Create Account</button>
+                </div>
+            </div>
+            <div class="register-backdrop"></div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
