@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const logBlock = document.querySelector('.log_block');
     const backLogin = document.querySelector('.back_login');
     const closeBtn = document.querySelector('.close-btn');
-    const togglePassword = document.querySelector('.toggle-password');
-    const passwordInput = document.querySelector('.inp2');
     
     // Переменные для регистрации
     const showRegisterLink = document.querySelector('.show-register');
@@ -26,6 +24,54 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let housings = []; // Массив для хранения созданных жилищ
     
+    // Глобальная функция для переключения видимости пароля
+    window.togglePassword = function(button) {
+        console.log('Toggle password clicked'); // Для отладки
+        const passwordInput = button.parentElement.querySelector('input');
+        if (passwordInput) {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                console.log('Password shown');
+            } else {
+                passwordInput.type = 'password';
+                console.log('Password hidden');
+            }
+        } else {
+            console.log('Password input not found');
+        }
+    };
+    
+    // Альтернативный способ через делегирование событий
+    function initPasswordToggles() {
+        // Обработчик для кнопок в окне логина
+        const loginPasswordToggle = document.querySelector('.main_login .toggle-password');
+        if (loginPasswordToggle) {
+            loginPasswordToggle.addEventListener('click', function() {
+                const passwordInput = this.parentElement.querySelector('.inp2');
+                togglePasswordType(passwordInput);
+            });
+        }
+        
+        // Обработчики для кнопок в окне регистрации
+        const registerPasswordToggles = document.querySelectorAll('.register-modal .toggle-password');
+        registerPasswordToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const passwordInput = this.parentElement.querySelector('.register-input');
+                togglePasswordType(passwordInput);
+            });
+        });
+    }
+    
+    function togglePasswordType(input) {
+        if (input) {
+            if (input.type === 'password') {
+                input.type = 'text';
+            } else {
+                input.type = 'password';
+            }
+        }
+    }
+    
     // Функции для логина
     function showLogin() {
         logBlock.style.display = 'block';
@@ -35,14 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideLogin() {
         logBlock.style.display = 'none';
         document.body.style.overflow = 'auto';
-    }
-    
-    function togglePasswordVisibility() {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-        } else {
-            passwordInput.type = 'password';
-        }
     }
     
     // Функции для регистрации
@@ -93,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Registration data for DB:', {
             name,
             email,
-            phone, // Телефон сохраняется в БД, но не используется в функционале
+            phone,
             password
         });
         
@@ -183,7 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
             description,
             image: imageUrl,
             features,
-            // В будущем добавим fileData для сохранения в БД
             fileData: imageInput.files[0] ? {
                 name: imageInput.files[0].name,
                 type: imageInput.files[0].type,
@@ -237,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loginButton.addEventListener('click', showLogin);
     backLogin.addEventListener('click', hideLogin);
     closeBtn.addEventListener('click', hideLogin);
-    togglePassword.addEventListener('click', togglePasswordVisibility);
     
     // Слушатели для регистрации
     showRegisterLink.addEventListener('click', function(e) {
@@ -293,6 +329,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.register-content').addEventListener('click', function(event) {
         event.stopPropagation();
     });
+    
+    // Инициализация паролей
+    initPasswordToggles();
     
     // Инициализация
     renderHousings();
