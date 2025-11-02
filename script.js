@@ -24,53 +24,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let housings = []; // Массив для хранения созданных жилищ
     
-    // Глобальная функция для переключения видимости пароля
-    window.togglePassword = function(button) {
-        console.log('Toggle password clicked'); // Для отладки
+    // Функция для переключения видимости пароля (одинаковая для login и регистрации)
+    function togglePasswordVisibility(button) {
         const passwordInput = button.parentElement.querySelector('input');
-        if (passwordInput) {
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                console.log('Password shown');
-            } else {
-                passwordInput.type = 'password';
-                console.log('Password hidden');
-            }
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
         } else {
-            console.log('Password input not found');
+            passwordInput.type = 'password';
         }
-    };
-    
-    // Альтернативный способ через делегирование событий
-    function initPasswordToggles() {
-        // Обработчик для кнопок в окне логина
-        const loginPasswordToggle = document.querySelector('.main_login .toggle-password');
-        if (loginPasswordToggle) {
-            loginPasswordToggle.addEventListener('click', function() {
-                const passwordInput = this.parentElement.querySelector('.inp2');
-                togglePasswordType(passwordInput);
-            });
-        }
-        
-        // Обработчики для кнопок в окне регистрации
-        const registerPasswordToggles = document.querySelectorAll('.register-modal .toggle-password');
-        registerPasswordToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const passwordInput = this.parentElement.querySelector('.register-input');
-                togglePasswordType(passwordInput);
-            });
+    }
+
+    // Обработчики для кнопок показа пароля в LOGIN
+    const loginTogglePassword = document.querySelector('.main_login .toggle-password');
+    if (loginTogglePassword) {
+        loginTogglePassword.addEventListener('click', function() {
+            togglePasswordVisibility(this);
         });
     }
-    
-    function togglePasswordType(input) {
-        if (input) {
-            if (input.type === 'password') {
-                input.type = 'text';
-            } else {
-                input.type = 'password';
-            }
-        }
-    }
+
+    // Обработчики для кнопок показа пароля в РЕГИСТРАЦИИ
+    const registerTogglePasswords = document.querySelectorAll('.register-modal .toggle-password');
+    registerTogglePasswords.forEach(button => {
+        button.addEventListener('click', function() {
+            togglePasswordVisibility(this);
+        });
+    });
     
     // Функции для логина
     function showLogin() {
@@ -329,9 +307,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.register-content').addEventListener('click', function(event) {
         event.stopPropagation();
     });
-    
-    // Инициализация паролей
-    initPasswordToggles();
     
     // Инициализация
     renderHousings();
