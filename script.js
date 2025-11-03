@@ -12,7 +12,7 @@
 }
 
 .header{
-    width:     100%;
+    width:100%;
     height: 100px;
     position:relative;
     position: fixed;
@@ -37,7 +37,7 @@
     padding: 0;
     cursor: pointer;
     position: absolute;
-    right: 20%;
+    right: 200px;
     top: 30%;
     display: grid;
     grid-template-columns: 60% 40%;
@@ -63,7 +63,7 @@
     overflow: hidden;
     margin: 0;
     position: absolute;
-    right: 5%;
+    right: 50px;
     top: 27%;
     display: grid;
     grid-template-columns: 70% 30%;
@@ -784,20 +784,22 @@
 		padding-right: 40px;
 	}
 	.img_1, .img_2, .img_3{
-		width: 100px;
+		width: 70px;
 		margin-top: 260px;
 	}
 
 	.img_2{
-		margin-left: 120px;
+		margin-left: 80px;
 	}
 
 	.img_3{
-		margin-left: 240px;
+		margin-left: 160px;
+		display: none;
 	}
 
 	.main__txt{
-		font-size: 30px;
+		font-size: 19px;
+		width: none;
 	}
 
 	.main__un_txt{
@@ -810,11 +812,11 @@
 	}
 
 	.head__lang{
-		right: 23%;
+		right: 180px;
 	}
 
 	.head__login{
-		right: 7%;
+		right: 40px;
 	}
 
 	.search-input{
@@ -829,197 +831,8 @@
 	}
 
 	.head__lang{
-		right:30%;
+		right:170px;
 	}
 
 }
 
-/* Добавьте эти исправления в конец файла */
-
-@media (max-width: 768px){
-    .main{
-        gap: 20px;
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-        padding-top: 100px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    .img_1, .img_2, .img_3{
-        width: 100px;
-        margin-top: 260px;
-        display: none; /* Скрываем на мобильных */
-    }
-
-    .main__txt{
-        font-size: 30px;
-        width: 100%;
-        text-align: center;
-        padding-top: 20px;
-        grid-column: 1;
-    }
-
-    .main__un_txt{
-        font-size: 15px;
-        margin-top: 160px;
-        text-align: center;
-        grid-column: 1;
-    }
-
-    .main__see{
-        margin-top: 200px;
-        grid-column: 1;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .head__lang{
-        right: 23%;
-    }
-
-    .head__login{
-        right: 7%;
-    }
-
-    .search-input{
-        font-size: 12px;
-    }
-
-    .housing-section{
-        display: block;
-        gap: 30px;
-        padding: 20px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .housing-cards {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .filters-sidebar {
-        width: 100%;
-        margin: 0 auto 30px;
-        box-sizing: border-box;
-    }
-}
-
-@media (max-width: 700px){
-    .housing-section{
-        display: block;
-        gap: 30px;
-        padding: 15px;
-    }
-
-    .head__lang{
-        right:30%;
-    }
-}
-
-@media (max-width: 480px){
-    .main{
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
-        padding-top: 100px;
-    }
-
-    .main__txt, .main__un_txt, .main__see, .img_1, .img_2, .img_3 {
-        grid-column: 1;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .main__txt{
-        width: 100%;
-        font-size: 24px;
-        padding-top: 20px;
-    }
-
-    .main__un_txt{
-        margin-top: 50px;
-        font-size: 14px;
-    }
-
-    .main__see{
-        margin-top: 100px;
-    }
-
-    .img_1, .img_2, .img_3{
-        display: none;
-    }
-
-    .housing-section {
-        padding: 15px;
-    }
-
-    .create-content, .view-content, .register-content {
-        width: 95%;
-        padding: 20px;
-        margin: 0 auto;
-    }
-
-    .filters-sidebar {
-        padding: 20px;
-        width: 100%;
-        margin: 0 auto 20px;
-    }
-
-    .search-input {
-        width: 100%;
-        font-size: 16px; /* Увеличиваем для удобства на мобильных */
-    }
-
-    /* Исправляем отступы для мобильных */
-    .auth1, .auth2 {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .inp1, .inp2 {
-        margin-left: 20px;
-        margin-right: 20px;
-        width: calc(100% - 40px);
-    }
-
-    .password-container {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .end_login {
-        margin-left: 20px;
-        margin-right: 20px;
-        width: calc(100% - 40px);
-    }
-}
-
-/* Дополнительные исправления для центрирования */
-.housing-section {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.filters-sidebar {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Убедимся, что контент не выходит за пределы экрана */
-body {
-    overflow-x: hidden;
-    width: 100%;
-}
-
-.page {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.main__block {
-    width: 100%;
-    overflow-x: hidden;
-}
