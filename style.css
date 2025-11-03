@@ -781,8 +781,12 @@
 @media (width < 768px){
 	.main{
 		gap: 20px;
-		grid-template-columns: 30% 45%;
-		padding-right: 40px;
+		grid-template-columns: 40% 45%;
+		
+	}
+
+	.main__txt{
+		height: 60px;
 	}
 	.img_1, .img_2, .img_3{
 		width: 70px;
@@ -795,12 +799,12 @@
 
 	.img_3{
 		margin-left: 160px;
-		display: none;
+		
 	}
 
 	.main__txt{
-		font-size: 19px;
-		width: none;
+		font-size: 25px;
+		width: 200px;
 	}
 
 	.main__un_txt{
