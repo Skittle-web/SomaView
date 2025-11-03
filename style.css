@@ -12,7 +12,7 @@
 }
 
 .header{
-    width:     100%;
+    width:100%;
     height: 100px;
     position:relative;
     position: fixed;
@@ -37,7 +37,7 @@
     padding: 0;
     cursor: pointer;
     position: absolute;
-    right: 20%;
+    right: 200px;
     top: 30%;
     display: grid;
     grid-template-columns: 60% 40%;
@@ -63,7 +63,7 @@
     overflow: hidden;
     margin: 0;
     position: absolute;
-    right: 5%;
+    right: 50px;
     top: 27%;
     display: grid;
     grid-template-columns: 70% 30%;
@@ -84,6 +84,7 @@
     width: 100%;
     padding: 0;
     padding-top: 100px;
+    padding-right: 0;
     margin: 0;
     display: grid;
     grid-template-columns: 25% 60%;
@@ -555,7 +556,7 @@
     background: white;
     padding: 40px;
     border-radius: 20px;
-    width: 500px;
+    width: 70%;
     max-width: 90%;
     z-index: 1002;
     max-height: 80vh;
@@ -784,20 +785,22 @@
 		padding-right: 40px;
 	}
 	.img_1, .img_2, .img_3{
-		width: 100px;
+		width: 70px;
 		margin-top: 260px;
 	}
 
 	.img_2{
-		margin-left: 120px;
+		margin-left: 80px;
 	}
 
 	.img_3{
-		margin-left: 240px;
+		margin-left: 160px;
+		display: none;
 	}
 
 	.main__txt{
-		font-size: 30px;
+		font-size: 19px;
+		width: none;
 	}
 
 	.main__un_txt{
@@ -810,11 +813,11 @@
 	}
 
 	.head__lang{
-		right: 23%;
+		right: 180px;
 	}
 
 	.head__login{
-		right: 7%;
+		right: 40px;
 	}
 
 	.search-input{
@@ -829,7 +832,10 @@
 	}
 
 	.head__lang{
-		right:30%;
+		right:170px;
 	}
 
 }
+
+
+
