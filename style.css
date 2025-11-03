@@ -88,7 +88,7 @@
     margin: 0;
     display: grid;
     grid-template-columns: 25% 60%;
-    gap: 60px;
+    gap: 30px;
 }
 
 .main__img{
@@ -337,7 +337,7 @@
 }
 
 .main__block{
-    height: 2400px;
+    
 }
 
 .create-account-link {
@@ -789,16 +789,16 @@
 		height: 60px;
 	}
 	.img_1, .img_2, .img_3{
-		width: 70px;
+		width: 30%;
 		margin-top: 260px;
 	}
 
 	.img_2{
-		margin-left: 80px;
+		margin-left: 35%;
 	}
 
 	.img_3{
-		margin-left: 160px;
+		margin-left: 70%;
 		
 	}
 
