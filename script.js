@@ -84,6 +84,7 @@
     width: 100%;
     padding: 0;
     padding-top: 100px;
+	padding-rigt: 0;
     margin: 0;
     display: grid;
     grid-template-columns: 25% 60%;
@@ -835,4 +836,5 @@
 	}
 
 }
+
 
