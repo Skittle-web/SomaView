@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     }
     
-    function togglePasswordVisibility() {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
+    function togglePasswordVisibility(input) {
+        if (input.type === 'password') {
+            input.type = 'text';
         } else {
-            passwordInput.type = 'password';
+            input.type = 'password';
         }
     }
     
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loginButton.addEventListener('click', showLogin);
     backLogin.addEventListener('click', hideLogin);
     closeBtn.addEventListener('click', hideLogin);
-    togglePassword.addEventListener('click', togglePasswordVisibility);
+    togglePassword.addEventListener('click', () => togglePasswordVisibility(passwordInput));
     
     // Слушатели для регистрации
     showRegisterLink.addEventListener('click', function(e) {
@@ -247,6 +247,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     closeRegisterBtn.addEventListener('click', hideRegister);
     submitRegisterBtn.addEventListener('click', registerAccount);
+    
+    // Слушатели для переключения видимости пароля в регистрации
+    const registerPasswordInput = document.querySelector('.register-password');
+    const registerConfirmInput = document.querySelector('.register-confirm');
+    const registerToggleButtons = document.querySelectorAll('.register-group .toggle-password');
+    
+    registerToggleButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            const input = index === 0 ? registerPasswordInput : registerConfirmInput;
+            togglePasswordVisibility(input);
+        });
+    });
     
     // Слушатель для кнопки "See more"
     document.querySelector('.main__see').addEventListener('click', scrollToHousing);
