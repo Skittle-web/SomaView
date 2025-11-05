@@ -29,18 +29,16 @@
     margin-left: 10px;
 }
 
-.head__lang{
+.head__lang {
     width: 60px;
     background: none;
     border: none;
     margin: 0;
     padding: 0;
     cursor: pointer;
-    position: absolute;
-    right: 200px;
-    top: 30%;
     display: grid;
     grid-template-columns: 60% 40%;
+    align-items: center;
 }
 
 .lang_line{
@@ -333,7 +331,7 @@
 
 .eye{
     height: 15px;
-    width: 15px;
+    width: 15px;	
 }
 
 .main__block{
@@ -359,14 +357,65 @@
     text-decoration: underline;
 }
 
+/* Стили для вкладок */
+.tabs-section {
+    padding: 20px 40px 0;
+    margin-top: 50px;
+}
+
+.tabs-container {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    background: none;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    font-family: inter;
+    font-size: 18px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background-color: #0A575B;
+    color: white;
+}
+
+.tab-btn:hover:not(.active) {
+    background-color: #f0f0f0;
+    color: #0A575B;
+}
+
 /* Секция с жильем */
 .housing-section {
     display: grid;
     grid-template-columns: 25% 60%;
     gap: 60px;
     padding: 40px;
-    margin-top: 50px;
+    margin-top: 20px;
     scroll-margin-top: 100px;
+}
+
+/* Секция гольфкаров */
+.golfcars-section {
+    display: grid;
+    grid-template-columns: 25% 60%;
+    gap: 60px;
+    padding: 40px;
+    margin-top: 20px;
+    scroll-margin-top: 100px;
+}
+
+.housing-content, .golfcars-content {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Левая часть - фильтры */
@@ -389,7 +438,7 @@
     margin-bottom: 25px;
 }
 
-.search-input {
+.search-input, .search-input-golf {
     width: 85%;
     padding: 12px 15px;
     border: 2px solid #e0e0e0;
@@ -400,7 +449,89 @@
     transition: border-color 0.3s;
 }
 
-.search-input:focus {
+.search-input:focus, .search-input-golf:focus {
+    border-color: #0A575B;
+}
+
+/* Группы фильтров */
+.filter-group {
+    margin-bottom: 25px;
+}
+
+.filter-label {
+    display: block;
+    font-family: inter;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Фильтр площади */
+.area-filter {
+    margin-bottom: 10px;
+}
+
+.area-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e0e0e0;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.area-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0A575B;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.area-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0A575B;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.area-values {
+    display: flex;
+    justify-content: space-between;
+    font-family: inter;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.area-current {
+    font-weight: 600;
+    color: #0A575B;
+}
+
+/* Фильтр спален */
+.bedrooms-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inter;
+    font-size: 16px;
+    outline: none;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.bedrooms-select:focus {
     border-color: #0A575B;
 }
 
@@ -420,7 +551,7 @@
     padding-left: 35px;
 }
 
-.filter-input, .create-filter {
+.filter-input, .create-filter, .filter-input-golf, .create-filter-golf {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -442,7 +573,9 @@
 }
 
 .filter-input:checked ~ .checkmark,
-.create-filter:checked ~ .checkmark {
+.create-filter:checked ~ .checkmark,
+.filter-input-golf:checked ~ .checkmark,
+.create-filter-golf:checked ~ .checkmark {
     background-color: #0A575B;
     border-color: #0A575B;
 }
@@ -461,35 +594,49 @@
 }
 
 .filter-input:checked ~ .checkmark:after,
-.create-filter:checked ~ .checkmark:after {
+.create-filter:checked ~ .checkmark:after,
+.filter-input-golf:checked ~ .checkmark:after,
+.create-filter-golf:checked ~ .checkmark:after {
     display: block;
 }
 
-.create-housing-btn {
-    width: 100%;
-    padding: 15px;
+/* Кнопки создания для админа */
+.create-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 50;
+}
+
+.admin-btn {
+    padding: 15px 25px;
     background-color: #0A575B;
     color: white;
     border: none;
     border-radius: 10px;
     font-family: inter;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.create-housing-btn:hover {
+.admin-btn:hover {
     background-color: #08484c;
+    transform: translateY(-2px);
 }
 
 /* Правая часть - карточки */
-.housing-cards {
+.housing-cards, .golfcars-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
 }
 
-.housing-card {
+.housing-card, .golfcar-card {
     background: white;
     border-radius: 15px;
     overflow: hidden;
@@ -498,22 +645,22 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.housing-card:hover {
+.housing-card:hover, .golfcar-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.housing-card-img {
+.housing-card-img, .golfcar-card-img {
     width: 100%;
     height: 200px;
     object-fit: cover;	
 }
 
-.housing-card-content {
+.housing-card-content, .golfcar-card-content {
     padding: 20px;
 }
 
-.housing-card-title {
+.housing-card-title, .golfcar-card-title {
     font-family: inter;
     font-size: 20px;
     font-weight: 600;
@@ -521,7 +668,22 @@
     margin-bottom: 10px;
 }
 
-.housing-card-features {
+.housing-card-details {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-family: inter;
+    font-size: 14px;
+    color: #666;
+}
+
+.housing-card-area, .housing-card-bedrooms {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.housing-card-features, .golfcar-card-features {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -538,7 +700,7 @@
 }
 
 /* Модальные окна */
-.create-modal, .view-modal, .register-modal {
+.create-modal, .view-modal, .register-modal, .create-golfcar-modal, .view-golfcar-modal {
     display: none;
     position: fixed;
     top: 0;
@@ -581,7 +743,7 @@
     z-index: 1001;
 }
 
-.close-create-btn, .close-view-btn, .close-register-btn {
+.close-create-btn, .close-view-btn, .close-register-btn, .close-create-golfcar-btn, .close-view-golfcar-btn {
     position: absolute;
     top: 15px;
     right: 20px;
@@ -604,6 +766,12 @@
     margin-bottom: 20px;
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .form-group label {
     display: block;
     font-family: inter;
@@ -613,7 +781,7 @@
     font-weight: 500;
 }
 
-.create-name, .create-image, .create-description {
+.create-name, .create-image, .create-description, .create-golfcar-name, .create-golfcar-image, .create-golfcar-description, .create-area, .create-bedrooms {
     width: 100%;
     padding: 12px;
     border: 2px solid #e0e0e0;
@@ -625,7 +793,7 @@
     box-sizing: border-box;
 }
 
-.create-image[type="file"] {
+.create-image[type="file"], .create-golfcar-image[type="file"] {
     padding: 8px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
@@ -635,16 +803,16 @@
     cursor: pointer;
 }
 
-.create-image[type="file"]:focus {
+.create-image[type="file"]:focus, .create-golfcar-image[type="file"]:focus {
     border-color: #0A575B;
 }
 
-.create-description {
+.create-description, .create-golfcar-description {
     height: 100px;
     resize: vertical;
 }
 
-.create-name:focus, .create-image:focus, .create-description:focus {
+.create-name:focus, .create-image:focus, .create-description:focus, .create-golfcar-name:focus, .create-golfcar-image:focus, .create-golfcar-description:focus, .create-area:focus, .create-bedrooms:focus {
     border-color: #0A575B;
 }
 
@@ -657,7 +825,7 @@
     gap: 10px;
 }
 
-.submit-create-btn {
+.submit-create-btn, .submit-create-golfcar-btn {
     width: 100%;
     padding: 15px;
     background-color: #0A575B;
@@ -670,8 +838,25 @@
     margin-top: 20px;
 }
 
-.submit-create-btn:hover {
+.submit-create-btn:hover, .submit-create-golfcar-btn:hover {
     background-color: #08484c;
+}
+
+.view-details {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    font-family: inter;
+    font-size: 14px;
+    color: #666;
+}
+
+.view-area, .view-bedrooms {
+    background: #e8f4f5;
+    color: #0A575B;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 500;
 }
 
 .view-description {
@@ -824,13 +1009,47 @@
 		right: 40px;
 	}
 
-	.search-input{
+	.search-input, .search-input-golf{
 		font-size: 12px;
 	}
+
+    .tabs-section {
+        padding: 20px 20px 0;
+    }
+    
+    .tabs-container {
+        gap: 10px;
+    }
+    
+    .tab-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    
+    .housing-section, .golfcars-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .create-buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .admin-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
 }
 
 @media (width < 700px){
-	.housing-section{
+	.housing-section, .golfcars-section{
 		display: block;
 		gap: 30px;
 	}
@@ -841,3 +1060,382 @@
 
 }
 
+/* Футер */
+.footer {
+    background: linear-gradient(135deg, #0A575B 0%, #08484c 100%);
+    color: white;
+    margin-top: 80px;
+    padding: 60px 0 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+    gap: 40px;
+   
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-description {
+    font-family: inter;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.social-icon {
+	padding-right: 4px;
+    width: 23px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-title {
+    font-family: inter;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-link {
+    font-family: inter;
+    font-size: 14px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: inter;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+.contact-icon {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.newsletter-text {
+    font-family: inter;
+    font-size: 14px;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-family: inter;
+    font-size: 14px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter-input:focus {
+    background: white;
+}
+
+.newsletter-btn {
+    padding: 12px 20px;
+    background: #FF6B35;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: inter;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background: #e55a2b;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.payment-icon {
+    height: 25px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.payment-icon:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+    padding: 25px 0;
+}
+
+.footer-bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-family: inter;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 25px;
+}
+
+.bottom-link {
+    font-family: inter;
+    font-size: 14px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.bottom-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Адаптивность для футера */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 0 0;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    .footer-bottom-links {
+        gap: 15px;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-bottom-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .payment-methods {
+        justify-content: center;
+    }
+}
+
+/* Стили для выбора языка */
+.language-selector {
+    position: absolute;
+    right: 200px;
+    top: 30%;
+    z-index: 20;
+}
+
+.head__lang {
+    width: 60px;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-items: center;
+}
+
+.lang_line {
+    width: 20px;
+    margin: auto;
+    margin-top: 7px;
+}
+
+.lang_txt {
+    width: 65%;
+    color: white;
+    margin: 0;
+    font-family: inter;
+    font-size: 20px;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 180px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-top: 10px;
+    display: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.language-dropdown.show {
+    display: block;
+}
+
+.language-option {
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+}
+
+.language-option:last-child {
+    border-bottom: none;
+}
+
+.language-option:hover {
+    background-color: #f8f9fa;
+}
+
+.language-option.active {
+    background-color: #e8f4f5;
+}
+
+.language-text {
+    font-family: inter;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.language-option[data-lang="ar"] .language-text {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Адаптивность для выбора языка */
+@media (max-width: 768px) {
+    .language-selector {
+        right: 180px;
+    }
+    
+    .language-dropdown {
+        width: 160px;
+    }
+}
+
+@media (max-width: 700px) {
+    .language-selector {
+        right: 170px;
+    }
+    
+    .head__lang {
+        width: 50px;
+    }
+    
+    .lang_txt {
+        font-size: 18px;
+    }
+}
