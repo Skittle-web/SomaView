@@ -12,10 +12,26 @@
 <body class="page">
     <header class="header">
         <img src="images/logo.png" class="head__logo_img">
-        <button class="head__lang">
-            <h1 class="lang_txt">eng</h1>
-            <img class="lang_line" src="images/line.png">
-        </button>
+        <div class="language-selector">
+            <button class="head__lang">
+                <h1 class="lang_txt">eng</h1>
+                <img class="lang_line" src="images/line.png">
+            </button>
+            <div class="language-dropdown">
+                <div class="language-option" data-lang="ru">
+                    <span class="language-text">Русский</span>
+                </div>
+                <div class="language-option" data-lang="de">
+                    <span class="language-text">Deutsch</span>
+                </div>
+                <div class="language-option" data-lang="en">
+                    <span class="language-text">English</span>
+                </div>
+                <div class="language-option" data-lang="ar">
+                    <span class="language-text">العربية</span>
+                </div>
+            </div>
+        </div>
         <button class="head__login">
             <h1 class="login_txt">Log in</h1>
             <img src="images/login.png" class="login_img">
@@ -57,7 +73,15 @@
             </div>
         </div>
 
-        <!-- Блок с фильтрами и карточками -->
+        <!-- Блок переключения между вкладками -->
+        <div class="tabs-section">
+            <div class="tabs-container">
+                <button class="tab-btn active" data-tab="housing">Housing Rental</button>
+                <button class="tab-btn" data-tab="golfcars">Golf Cars Rental</button>
+            </div>
+        </div>
+
+        <!-- Блок с жильем -->
         <div class="housing-section" id="housingSection">
             <!-- Левая часть - фильтры -->
             <div class="filters-sidebar">
@@ -68,45 +92,99 @@
                     <input type="text" class="search-input" placeholder="Search by name...">
                 </div>
                 
+                <!-- Фильтр по площади -->
+                <div class="filter-group">
+                    <label class="filter-label">Min Area (m²)</label>
+                    <div class="area-filter">
+                        <input type="range" class="area-slider" min="50" max="500" value="50" step="10">
+                        <div class="area-values">
+                            <span class="area-min">50m²</span>
+                            <span class="area-current" id="currentArea">50m²</span>
+                            <span class="area-max">500m²</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Фильтр по количеству спален -->
+                <div class="filter-group">
+                    <label class="filter-label">Bedrooms</label>
+                    <div class="bedrooms-filter">
+                        <select class="bedrooms-select">
+                            <option value="0">Any</option>
+                            <option value="1">1 bedroom</option>
+                            <option value="2">2 bedrooms</option>
+                            <option value="3">3 bedrooms</option>
+                            <option value="4">4 bedrooms</option>
+                            <option value="5">5+ bedrooms</option>
+                        </select>
+                    </div>
+                </div>
+                
                 <!-- Фильтры-чекбоксы -->
                 <div class="filters-container">
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input" value="washing-machine">
+                        <span class="checkmark"></span>
+                        Washing machine
+                    </label>
                     <label class="filter-checkbox">
                         <input type="checkbox" class="filter-input" value="dishwasher">
                         <span class="checkmark"></span>
                         Dishwasher
                     </label>
-                    <label class="filter-checkbox">
-                        <input type="checkbox" class="filter-input" value="Washing machine">
-                        <span class="checkmark"></span>
-                        Citralka
-                    </label>
-                    <label class="filter-checkbox">
-                        <input type="checkbox" class="filter-input" value="wifi">
-                        <span class="checkmark"></span>
-                        WiFi
-                    </label>
-                    <label class="filter-checkbox">
-                        <input type="checkbox" class="filter-input" value="parking">
-                        <span class="checkmark"></span>
-                        Parking
-                    </label>
-                    <label class="filter-checkbox">
-                        <input type="checkbox" class="filter-input" value="pool">
-                        <span class="checkmark"></span>
-                        Pool
-                    </label>
                 </div>
-                
-                <!-- Кнопка создания жилья -->
-                <button class="create-housing-btn">
-                    Create Housing
-                </button>
             </div>
             
             <!-- Правая часть - карточки жилья -->
-            <div class="housing-cards" id="housingCards">
-                <!-- Карточки будут добавляться здесь -->
+            <div class="housing-content">
+                <div class="housing-cards" id="housingCards">
+                    <!-- Карточки будут добавляться здесь -->
+                </div>
             </div>
+        </div>
+
+        <!-- Блок с гольфкарами (скрыт по умолчанию) -->
+        <div class="golfcars-section" id="golfcarsSection" style="display: none;">
+            <!-- Левая часть - фильтры для гольфкаров -->
+            <div class="filters-sidebar">
+                <h2 class="filters-title">Filters</h2>
+                
+                <!-- Поиск по названию -->
+                <div class="search-container">
+                    <input type="text" class="search-input-golf" placeholder="Search by name...">
+                </div>
+                
+                <!-- Фильтры-чекбоксы для гольфкаров -->
+                <div class="filters-container">
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input-golf" value="4-seater">
+                        <span class="checkmark"></span>
+                        4-seater
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" class="filter-input-golf" value="6-seater">
+                        <span class="checkmark"></span>
+                        6-seater
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Правая часть - карточки гольфкаров -->
+            <div class="golfcars-content">
+                <div class="golfcars-cards" id="golfcarsCards">
+                    <!-- Карточки будут добавляться здесь -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопки создания (будут показаны только админу) -->
+        <div class="create-buttons">
+            <button class="create-housing-btn admin-btn">
+                Create Housing
+            </button>
+            <button class="create-golfcar-btn admin-btn">
+                Create Golf Car
+            </button>
         </div>
 
         <!-- Модальное окно создания жилья -->
@@ -125,6 +203,24 @@
                         <label>Description:</label>
                         <textarea class="create-description" placeholder="Enter housing description"></textarea>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Area (m²):</label>
+                            <input type="number" class="create-area" placeholder="Enter area" min="50" max="500">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Bedrooms:</label>
+                            <select class="create-bedrooms">
+                                <option value="1">1 bedroom</option>
+                                <option value="2">2 bedrooms</option>
+                                <option value="3">3 bedrooms</option>
+                                <option value="4">4 bedrooms</option>
+                                <option value="5">5+ bedrooms</option>
+                            </select>
+                        </div>
+                    </div>
                     
                     <div class="form-group">
                         <label>Image:</label>
@@ -136,29 +232,14 @@
                         <label class="filters-label">Features:</label>
                         <div class="create-filters">
                             <label class="filter-checkbox">
-                                <input type="checkbox" class="create-filter" value="dishwasher">
-                                <span class="checkmark"></span>
-                                Dishwasher
-                            </label>
-                            <label class="filter-checkbox">
-                                <input type="checkbox" class="create-filter" value="Washing machine">
+                                <input type="checkbox" class="create-filter" value="washing-machine">
                                 <span class="checkmark"></span>
                                 Washing machine
                             </label>
                             <label class="filter-checkbox">
-                                <input type="checkbox" class="create-filter" value="wifi">
+                                <input type="checkbox" class="create-filter" value="dishwasher">
                                 <span class="checkmark"></span>
-                                WiFi
-                            </label>
-                            <label class="filter-checkbox">
-                                <input type="checkbox" class="create-filter" value="parking">
-                                <span class="checkmark"></span>
-                                Parking
-                            </label>
-                            <label class="filter-checkbox">
-                                <input type="checkbox" class="create-filter" value="pool">
-                                <span class="checkmark"></span>
-                                Pool
+                                Dishwasher
                             </label>
                         </div>
                     </div>
@@ -174,8 +255,68 @@
             <div class="view-content">
                 <button class="close-view-btn">×</button>
                 <h2 class="view-title" id="viewHouseTitle"></h2>
+                <div class="view-details">
+                    <span class="view-area" id="viewHouseArea"></span>
+                    <span class="view-bedrooms" id="viewHouseBedrooms"></span>
+                </div>
                 <p class="view-description" id="viewHouseDescription"></p>
                 <div class="view-features" id="viewHouseFeatures"></div>
+            </div>
+            <div class="view-backdrop"></div>
+        </div>
+
+        <!-- Модальное окно создания гольфкара -->
+        <div class="create-golfcar-modal">
+            <div class="create-content">
+                <button class="close-create-golfcar-btn">×</button>
+                <h2 class="create-title">Create New Golf Car</h2>
+                
+                <div class="create-form">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="create-golfcar-name" placeholder="Enter golf car name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea class="create-golfcar-description" placeholder="Enter golf car description"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Image:</label>
+                        <input type="file" class="create-golfcar-image" accept="image/*">
+                        <small class="small" style="color: #666; font-size: 12px;">Supported formats: JPG, PNG, GIF</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="filters-label">Features:</label>
+                        <div class="create-filters">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" class="create-filter-golf" value="4-seater">
+                                <span class="checkmark"></span>
+                                4-seater
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" class="create-filter-golf" value="6-seater">
+                                <span class="checkmark"></span>
+                                6-seater
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="submit-create-golfcar-btn">Create Golf Car</button>
+                </div>
+            </div>
+            <div class="create-backdrop"></div>
+        </div>
+
+        <!-- Модальное окно просмотра гольфкара -->
+        <div class="view-golfcar-modal">
+            <div class="view-content">
+                <button class="close-view-golfcar-btn">×</button>
+                <h2 class="view-title" id="viewGolfcarTitle"></h2>
+                <p class="view-description" id="viewGolfcarDescription"></p>
+                <div class="view-features" id="viewGolfcarFeatures"></div>
             </div>
             <div class="view-backdrop"></div>
         </div>
@@ -227,8 +368,70 @@
             </div>
             <div class="register-backdrop"></div>
         </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/logo.png" class="footer-logo" alt="BayView Logo">
+                    <p class="footer-description">
+                        Your trusted platform for luxury rentals in SomaBay. 
+                        Discover the perfect housing and golf cars for your stay.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://t.me/somabayestate" class="social-link">
+                            <img src="images/tg_logo.png"  class="social-icon">
+                        </a>
+                        
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        
+                        
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <img src="images/location.png" alt="Location" class="contact-icon">
+                            <span>SomaBay, Red Sea, Egypt</span>
+                        </div>
+                        <div class="contact-item">
+                            <img src="images/phone.png" alt="Phone" class="contact-icon">
+                            <span>+20 106 692 6535</span>
+                        </div>
+                        <div class="contact-item">
+                            <img src="images/email.svg" alt="Email" class="contact-icon">
+                            <span>bvwspprt@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <img src="images/clock.png" alt="Hours" class="contact-icon">
+                            <span>24/7 Customer Support</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2025 BayView. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#" class="bottom-link">Privacy Policy</a>
+                        <a href="#" class="bottom-link">Terms of Service</a>
+                        <a href="#" class="bottom-link">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </main>
     <script src="script.js"></script>
 </body>
 </html>
-
